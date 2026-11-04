@@ -1,0 +1,11 @@
+package org.example.quizzy.repository;
+
+import jakarta.transaction.Transactional;
+import org.example.quizzy.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Transactional
+public interface UserRepository extends JpaRepository<User, Long> {
+}
