@@ -18,6 +18,6 @@ public class QuizController {
 
     @GetMapping(value="/get-quiz-list")
     public List<Quiz> getQuizList(){
-        return quizService.getQuizes();
+        return quizService.getQuizzes();
     }
 }

@@ -13,7 +13,7 @@ public class QuizService {
 
     private final QuizRepository quizRepository;
 
-    public List<Quiz> getQuizes(){
+    public List<Quiz> getQuizzes(){
         return quizRepository.findAll();
     }
 

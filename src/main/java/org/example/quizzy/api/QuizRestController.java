@@ -15,10 +15,10 @@ public class QuizRestController {
 
     @GetMapping
     public List<Quiz> getQuizList(){
-        return quizService.getQuizes();
+        return quizService.getQuizzes();
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping("{id}")
     public Quiz getQuiz(@PathVariable Long id){
         return quizService.getQuiz(id);
     }
