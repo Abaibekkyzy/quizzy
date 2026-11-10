@@ -20,4 +20,9 @@ public class QuestionService {
     public List<Question> findByQuizId(Long quizId){
         return questionRepository.findByQuizId(quizId);
     }
+
+    public Question getQuestion(Long id) {
+        return questionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Question not found"));
+    }
 }
