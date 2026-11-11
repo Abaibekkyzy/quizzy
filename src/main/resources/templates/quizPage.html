@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            color: #16a36a;
+            font-size: 36px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 16px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .question-number {
+            color: #16a36a;
+            font-weight: bold;
+        }
+
+        .answer {
+            background: #f4f7f5;
+            padding: 15px;
+            margin-top: 12px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+    <body>
+
+        <div class="container">
+            <div class="header">
+                <h1>QUIZZY</h1>
+                <h2 th:text="${quiz.title}">Quiz title</h2>
+                <p th:text="${quiz.description}">Description</p>
+            </div>
+
+            <div th:each="question, status : ${questions}"
+                 class="question-card">
+
+                <p class="question-number"
+                   th:text="'QUESTION ' + ${status.count}">
+                    QUESTION 1
+                </p>
+
+                <h2 th:text="${question.text}">
+                    Question text
+                </h2>
+
+                <div th:each="answer : ${answersByQuestionId[question.id]}"
+                     class="answer">
+
+                    <span th:text="${answer.text}">
+                        Answer text
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>
