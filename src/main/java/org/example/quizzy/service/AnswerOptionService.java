@@ -21,4 +21,14 @@ public class AnswerOptionService {
         return answerOptionRepository.findAllByQuestionId(questionId);
     }
 
+    public AnswerOption getAnswer(Long id){
+        return answerOptionRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException(   "Answer not found with id: " + id));
+    }
+
+    public boolean checkAnswer(Long id){
+        AnswerOption answerOption = getAnswer(id);
+        return answerOption.isCorrect();
+    }
+
 }

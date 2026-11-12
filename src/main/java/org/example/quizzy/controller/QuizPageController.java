@@ -22,11 +22,11 @@ public class QuizPageController {
     private final AnswerOptionService answerOptionService;
     private final QuestionService questionService;
 
-    @GetMapping("play/quiz/{d}")
-    public String showQuiz(@PathVariable Long d, Model model){
-        var Quiz = quizService.getQuiz(d);
+    @GetMapping("/play/quiz/{id}")
+    public String showQuiz(@PathVariable Long id, Model model){
+        var quiz = quizService.getQuiz(id);
 
-        List<Question> questions = questionService.findByQuizId(Quiz.getId());
+        List<Question> questions = questionService.findByQuizId(quiz.getId());
 
         Map<Long, List<AnswerOption>> answersByQuestionId = new HashMap<>();
 
@@ -36,7 +36,7 @@ public class QuizPageController {
             answersByQuestionId.put(question.getId(), answers);
         }
 
-        model.addAttribute("quiz", Quiz);
+        model.addAttribute("quiz", quiz);
         model.addAttribute("questions", questions);
         model.addAttribute("answersByQuestionId", answersByQuestionId);
         return "quizPage";
