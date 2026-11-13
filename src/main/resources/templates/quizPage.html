@@ -1,6 +1,8 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th=" http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="main_layout.html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,174 +131,13 @@
 
     <body>
 
-    <div class="container">
-
-        <div class="header">
-            <h1>QUIZZY</h1>
-            <h2 th:text="${quiz.title}">Quiz title</h2>
-            <p th:text="${quiz.description}">Description</p>
-        </div>
-
-        <div class="progress-container" id="progressContainer">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div th:each="question, status : ${questions}"
-             class="question-card"
-             th:attr="data-question-index=${status.index}">
-
-            <p class="question-number"
-               th:text="'QUESTION ' + ${status.count} + ' / ' + ${questions.size()}">
-                QUESTION 1
-            </p>
-
-            <h2 th:text="${question.text}">
-                Question text
-            </h2>
-
-            <div th:each="answer : ${answersByQuestionId[question.id]}"
-                 class="answer">
-
-                <button type="button"
-                        th:text="${answer.text}"
-                        th:attr="data-answer-id=${answer.id}">
-                </button>
-
-            </div>
+    <div class="container mt-5">
+        <div class="row">
 
         </div>
-
-        <div class="result-card" id="resultCard">
-            <h2>Quiz completed!</h2>
-
-            <div class="result-score" id="resultScore"></div>
-
-            <p id="resultMessage"></p>
-
-            <button type="button" onclick="location.reload()">
-                Try Again
-            </button>
-        </div>
-
     </div>
 
-    <script>
 
-        const questions = document.querySelectorAll(".question-card");
-        const progressBar = document.getElementById("progressBar");
-        const progressContainer = document.getElementById("progressContainer");
-        const resultCard = document.getElementById("resultCard");
-
-        let currentQuestion = 0;
-        let score = 0;
-
-        const totalQuestions = questions.length;
-
-        // Show the first question
-        if (totalQuestions > 0) {
-            questions[0].classList.add("active");
-        } else {
-            showResult();
-        }
-
-        async function checkAnswer(button) {
-
-            const answerId = button.dataset.answerId;
-
-            const currentCard = questions[currentQuestion];
-
-            const buttons = currentCard.querySelectorAll(".answer button");
-
-            // Prevent clicking multiple answers
-            buttons.forEach(btn => {
-                btn.disabled = true;
-            });
-
-            try {
-
-                const response = await fetch(`/api/answers/${answerId}/check`);
-
-                if (!response.ok) {
-                    throw new Error("Failed to check answer");
-                }
-
-                const result = await response.json();
-
-                if (result.correct === true) {
-                    button.classList.add("correct");
-                    score++;
-                } else {
-                    button.classList.add("incorrect");
-                }
-
-                // Move to the next question after 1.2 seconds
-                setTimeout(() => {
-                    nextQuestion();
-                }, 1200);
-
-            } catch (error) {
-
-                console.error("Error:", error);
-
-                // Allow another attempt if the request fails
-                buttons.forEach(btn => {
-                    btn.disabled = false;
-                });
-            }
-        }
-
-        function nextQuestion() {
-
-            questions[currentQuestion].classList.remove("active");
-
-            currentQuestion++;
-
-            if (currentQuestion < totalQuestions) {
-
-                questions[currentQuestion].classList.add("active");
-
-                updateProgress();
-
-            } else {
-
-                showResult();
-            }
-        }
-
-        function updateProgress() {
-
-            const progress = (currentQuestion / totalQuestions) * 100;
-
-            progressBar.style.width = progress + "%";
-        }
-
-        function showResult() {
-
-            questions.forEach(question => {
-                question.classList.remove("active");
-            });
-
-            progressContainer.style.display = "none";
-
-            resultCard.style.display = "block";
-
-            document.getElementById("resultScore").textContent =
-                score + " / " + totalQuestions;
-
-            const percentage = Math.round((score / totalQuestions) * 100);
-
-            document.getElementById("resultMessage").textContent =
-                "You answered " + percentage + "% of questions correctly!";
-        }
-
-        // Handle answer clicks
-        document.querySelectorAll(".answer button").forEach(button => {
-            button.addEventListener("click", function() {
-                checkAnswer(this);
-            });
-        });
-
-    </script>
 
     </body>
 </html>
