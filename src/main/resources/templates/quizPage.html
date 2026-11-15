@@ -21,6 +21,19 @@
              th:attr="data-question-index=${status.index}">
 
              <p class="question-number"
-                th:text="${status.index + 1}"></p>
+                th:text="'Question' + ${status.count} + ' / ' + ${question.size()}">
+                 Question 1
+             </p>
+
+        </div>
     </div>
+
+    <script>
+        const questions = document.querySelectorAll(".question-card");
+        const progressBar = document.getElementById("progressBar");
+        const progressContainer = document.getElementById("progressContainer");
+        const resultCard = document.getElementById("resultCard");
+
+
+    </script>
 </html>
