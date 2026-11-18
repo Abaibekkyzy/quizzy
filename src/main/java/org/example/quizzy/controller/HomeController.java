@@ -11,4 +11,7 @@ public class HomeController {
     public String indexPage() {
         return "index";
     }
+
+//    @GetMapping(value = "/play/quiz/1")
+//    public String quizPage() {return "quizPage";}
 }
