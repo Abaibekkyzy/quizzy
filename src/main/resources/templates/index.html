@@ -3,42 +3,81 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{main_layout}">
-    <body>
-        <div layout:fragment="content">
+<body>
+<div layout:fragment="content">
 
+    <!-- About Quizzy -->
+    <div class="jumbotron bg-light mt-4 mb-4">
+        <h1 class="display-4">Welcome to Quizzy!</h1>
+        <p class="lead">Quizzy is a simple and fun platform for creating and playing interactive quizzes.</p>
+        <hr class="my-4">
+        <p>Whether you are a teacher, a student or just want to challenge your friends, Quizzy helps you build a quiz in a few clicks and play it anywhere.</p>
+    </div>
 
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://kahoot.com/files/2019/02/Kahoot-at-school-14-scaled.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://kahoot.com/files/2019/02/GuidesTuts-GettingStarted-CoverImage-725x408.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://kahoot.com/files/2019/02/GuidesTuts-GettingStarted-CoverImage-725x408.png" class="d-block w-100" alt="...">
-                    </div>
+    <!-- Features -->
+    <h2 class="text-center mb-4">What can you do with Quizzy?</h2>
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">📝</div>
+                    <h5 class="card-title mt-2">Create quizzes</h5>
+                    <p class="card-text">Make your own quizzes with any number of questions and answer options.</p>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-
-
-
-            <div class="jumbotron bg-light mt-4">
-                <h1 class="display-4">Welcome to Quizzy!</h1>
-                <p class="lead">Create quizzes, share them and play with your friends.</p>
-                <hr class="my-4">
-                <p>Quizzy helps you build and take interactive quizzes in a few clicks.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
-
         </div>
-    </body>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">🎮</div>
+                    <h5 class="card-title mt-2">Play with friends</h5>
+                    <p class="card-text">Join a quiz and compete with other players in real time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">🏆</div>
+                    <h5 class="card-title mt-2">Track results</h5>
+                    <p class="card-text">See your score right after the quiz and follow your progress.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">📚</div>
+                    <h5 class="card-title mt-2">Manage your quizzes</h5>
+                    <p class="card-text">Edit, update and delete your quizzes in the My Quizzes section.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">🔒</div>
+                    <h5 class="card-title mt-2">Personal profile</h5>
+                    <p class="card-text">Sign up and keep all your quizzes and results in one place.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div style="font-size: 48px;">📱</div>
+                    <h5 class="card-title mt-2">Works everywhere</h5>
+                    <p class="card-text">Quizzy looks good on a computer, tablet and phone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join button -->
+    <div class="text-center my-5">
+        <a class="btn btn-success btn-lg px-5" th:href="@{/signup}" role="button">Join</a>
+    </div>
+
+</div>
+</body>
 </html>

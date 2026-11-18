@@ -131,7 +131,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <nav class="navbar navbar-expand-md bg-light navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/}">Quizzy</a>
 
@@ -168,5 +168,17 @@
             </div>
         </div>
     </body>
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 Quizzy. All rights reserved.</p>
+            <small>
+                <a href="#" class="text-white-50">About</a> ·
+                <a href="#" class="text-white-50">Contact</a> ·
+                <a href="#" class="text-white-50">Privacy</a>
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script type = "text/javascript" th:src = "@{'/js/bootstrap.bundle.js'}"></script>
 </html>
