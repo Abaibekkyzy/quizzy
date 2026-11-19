@@ -12,6 +12,6 @@ public class HomeController {
         return "index";
     }
 
-//    @GetMapping(value = "/play/quiz/1")
-//    public String quizPage() {return "quizPage";}
+    @GetMapping(value="/signUp")
+    public String signUpPage() {return "signupPage";}
 }
